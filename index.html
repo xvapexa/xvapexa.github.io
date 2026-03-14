@@ -10,8 +10,67 @@
             font-family: 'Segoe UI', Arial, sans-serif;
             background: #0f172a;
             color: white;
-            overflow-x: hidden;
+            overflow: hidden; /* იკეტება სქროლი ლოგინამდე */
         }
+
+        /* Login Overlay */
+        #authOverlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #020617;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-card {
+            background: #0f172a;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #22c55e;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.1);
+        }
+
+        .auth-card h2 { color: #22c55e; margin-bottom: 25px; }
+
+        .auth-card input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #1e293b;
+            background: #020617;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background: #22c55e;
+            border: none;
+            border-radius: 8px;
+            color: #020617;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .auth-btn:hover { background: #16a34a; }
+
+        .switch-auth {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        /* Main Content (დამალულია თავიდან) */
+        #mainContent { display: none; }
 
         header {
             background: #020617;
@@ -22,255 +81,132 @@
             border-bottom: 1px solid #1e293b;
         }
 
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-            color: #22c55e;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .logo { font-size: 26px; font-weight: bold; color: #22c55e; letter-spacing: 1px; }
 
-        nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+        nav a { color: #94a3b8; text-decoration: none; margin-left: 25px; transition: 0.3s; }
+        nav a:hover { color: #22c55e; }
 
-        nav a:hover {
-            color: #22c55e;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 120px 20px;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-        }
-
-        .hero h1 {
-            font-size: 55px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            color: #94a3b8;
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-
+        .hero { text-align: center; padding: 120px 20px; background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); }
+        .hero h1 { font-size: 55px; margin-bottom: 10px; }
+        
         .button {
-            display: inline-block;
-            background: #22c55e;
-            padding: 18px 45px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #020617;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.3s;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            display: inline-block; background: #22c55e; padding: 18px 45px; border-radius: 10px;
+            text-decoration: none; color: #020617; font-weight: bold; cursor: pointer; border: none;
         }
 
-        .button:hover {
-            background: #16a34a;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
-        }
+        .servers { display: flex; justify-content: center; gap: 40px; padding: 80px 20px; }
+        .card { background: #020617; padding: 40px; border-radius: 15px; width: 280px; text-align: center; border: 1px solid #1e293b; }
 
-        .servers {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            padding: 80px 20px;
-        }
-
-        .card {
-            background: #020617;
-            padding: 40px;
-            border-radius: 15px;
-            width: 300px;
-            text-align: center;
-            border: 1px solid #1e293b;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            border-color: #22c55e;
-            transform: scale(1.02);
-        }
-
-        .card h2 { margin-top: 0; }
-        .card .price { font-size: 32px; color: #22c55e; font-weight: bold; margin: 15px 0; }
-        .card p { color: #94a3b8; margin: 10px 0; }
-
-        /* Modal Styles */
-        .modal {
-            display: none; 
-            position: fixed;
-            z-index: 1000;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-        }
-
-        .modal-content {
-            background-color: #020617;
-            margin: 10% auto;
-            padding: 40px;
-            border: 1px solid #22c55e;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-            right: 25px; top: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            color: #94a3b8;
-        }
-
-        .selection-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .select-btn {
-            background: #1e293b;
-            color: white;
-            border: 1px solid #334155;
-            padding: 16px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-
-        .select-btn:hover {
-            border-color: #22c55e;
-            background: #0f172a;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px;
-            background: #020617;
-            color: #64748b;
-            border-top: 1px solid #1e293b;
-        }
+        /* Order Modal */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
+        .modal-content { background: #020617; margin: 10% auto; padding: 40px; border: 1px solid #22c55e; width: 350px; border-radius: 20px; text-align: center; position: relative; }
+        .select-btn { background: #1e293b; color: white; border: 1px solid #334155; padding: 15px; width: 100%; margin-top: 10px; border-radius: 10px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">VaPeX</div>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Servers</a>
-        <a href="#">Panel</a>
-    </nav>
-</header>
-
-<section class="hero">
-    <h1>Free Minecraft Hosting</h1>
-    <p>High performance nodes for your community.</p>
-    <button class="button" onclick="openModal()">Create Server</button>
-</section>
-
-<section class="servers">
-    <div class="card">
-        <h2>Free Plan</h2>
-        <div class="price">0$</div>
-        <p>2GB DDR4 RAM</p>
-        <p>10 Player Slots</p>
-        <p>200% CPU Limit</p>
+<div id="authOverlay">
+    <div class="auth-card" id="loginBox">
+        <h2>Login to VaPeX</h2>
+        <input type="text" id="logUser" placeholder="Username">
+        <input type="password" id="logPass" placeholder="Password">
+        <button class="auth-btn" onclick="handleAuth()">Login</button>
+        <p class="switch-auth" onclick="toggleAuth()">Don't have an account? Register</p>
     </div>
-    <div class="card">
-        <h2>Pro Plan</h2>
-        <div class="price">Premium</div>
-        <p>6GB DDR4 RAM</p>
-        <p>Unlimited Slots</p>
-        <p>400% CPU Limit</p>
+
+    <div class="auth-card" id="registerBox" style="display:none;">
+        <h2>Register</h2>
+        <input type="text" id="regUser" placeholder="Choose Username">
+        <input type="email" id="regEmail" placeholder="Email Address">
+        <input type="password" id="regPass" placeholder="Create Password">
+        <button class="auth-btn" onclick="handleAuth()">Create Account</button>
+        <p class="switch-auth" onclick="toggleAuth()">Already have an account? Login</p>
     </div>
-</section>
+</div>
+
+<div id="mainContent">
+    <header>
+        <div class="logo">VaPeX</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Servers</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Free Minecraft Hosting</h1>
+        <p>High performance nodes for your community.</p>
+        <button class="button" onclick="openModal()">Create Server</button>
+    </section>
+
+    <section class="servers">
+        <div class="card">
+            <h2>Free Plan</h2>
+            <p style="color:#22c55e; font-size: 24px;">0$</p>
+            <p>2GB RAM</p>
+        </div>
+        <div class="card">
+            <h2>Pro Plan</h2>
+            <p style="color:#22c55e; font-size: 24px;">Premium</p>
+            <p>6GB RAM</p>
+        </div>
+    </section>
+</div>
 
 <div id="orderModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        
+        <span style="position:absolute; right:20px; top:10px; cursor:pointer;" onclick="closeModal()">&times;</span>
         <div id="step1">
-            <h2 style="margin-bottom: 5px;">Select Location</h2>
-            <p style="color: #94a3b8; margin-bottom: 20px;">Where should we host your server?</p>
-            <div class="selection-list">
-                <button class="select-btn" onclick="nextStep('Europe')">🇪🇺 Europe (Germany)</button>
-                <button class="select-btn" onclick="nextStep('Asia')">🌏 Asia (Singapore)</button>
-                <button class="select-btn" onclick="nextStep('USA')">🇺🇸 North America</button>
-            </div>
+            <h3>Select Location</h3>
+            <button class="select-btn" onclick="nextStep('Europe')">Europe</button>
+            <button class="select-btn" onclick="nextStep('USA')">USA</button>
         </div>
-
         <div id="step2" style="display:none;">
-            <h2 style="margin-bottom: 5px;">Choose Plan</h2>
-            <p style="color: #94a3b8; margin-bottom: 20px;">Which package do you prefer?</p>
-            <div class="selection-list">
-                <button class="select-btn" onclick="finishOrder('Free (2GB)')">Free Plan - 0$</button>
-                <button class="select-btn" onclick="finishOrder('Pro (6GB)')">Pro Plan - Premium</button>
-            </div>
-            <br>
-            <a href="javascript:void(0)" onclick="prevStep()" style="color: #22c55e; text-decoration: none; font-size: 14px;">← Go Back</a>
+            <h3>Select Plan</h3>
+            <button class="select-btn" onclick="finishOrder('Free')">Free (2GB)</button>
+            <button class="select-btn" onclick="finishOrder('Pro')">Pro (6GB)</button>
         </div>
     </div>
 </div>
 
-<footer>
-    <p>© 2026 VaPeX Hosting. All rights reserved.</p>
-</footer>
-
 <script>
-    let userLocation = "";
-
-    function openModal() {
-        document.getElementById("orderModal").style.display = "block";
-        document.body.style.overflow = "hidden";
-    }
-
-    function closeModal() {
-        document.getElementById("orderModal").style.display = "none";
-        document.body.style.overflow = "auto";
-        prevStep();
-    }
-
-    function nextStep(loc) {
-        userLocation = loc;
-        document.getElementById("step1").style.display = "none";
-        document.getElementById("step2").style.display = "block";
-    }
-
-    function prevStep() {
-        document.getElementById("step1").style.display = "block";
-        document.getElementById("step2").style.display = "none";
-    }
-
-    function finishOrder(plan) {
-        alert("Success! Your server is being prepared.\nLocation: " + userLocation + "\nPlan: " + plan);
-        closeModal();
-    }
-
-    window.onclick = function(event) {
-        let modal = document.getElementById("orderModal");
-        if (event.target == modal) {
-            closeModal();
+    // Auth Logic
+    function toggleAuth() {
+        const login = document.getElementById('loginBox');
+        const register = document.getElementById('registerBox');
+        if (login.style.display === 'none') {
+            login.style.display = 'block';
+            register.style.display = 'none';
+        } else {
+            login.style.display = 'none';
+            register.style.display = 'block';
         }
+    }
+
+    function handleAuth() {
+        // ამ ეტაპზე ნებისმიერი შესვლა მუშაობს
+        document.getElementById('authOverlay').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        document.body.style.overflow = 'auto';
+    }
+
+    function logout() {
+        location.reload();
+    }
+
+    // Order Logic
+    let userLoc = "";
+    function openModal() { document.getElementById("orderModal").style.display = "block"; }
+    function closeModal() { document.getElementById("orderModal").style.display = "none"; }
+    function nextStep(l) { 
+        userLoc = l;
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+    }
+    function finishOrder(p) {
+        alert("Server request sent!\nLocation: " + userLoc + "\nPlan: " + p);
+        closeModal();
     }
 </script>
 
