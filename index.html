@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VaPeX Hosting | Free Minecraft Servers</title>
     <style>
-        /* მთავარი სტილები */
         body {
             margin: 0;
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -43,7 +42,6 @@
             color: #22c55e;
         }
 
-        /* Hero სექცია */
         .hero {
             text-align: center;
             padding: 120px 20px;
@@ -82,7 +80,6 @@
             box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
         }
 
-        /* ბარათების სექცია */
         .servers {
             display: flex;
             justify-content: center;
@@ -110,7 +107,7 @@
         .card .price { font-size: 32px; color: #22c55e; font-weight: bold; margin: 15px 0; }
         .card p { color: #94a3b8; margin: 10px 0; }
 
-        /* Modal (არჩევანის ფანჯარა) */
+        /* Modal Styles */
         .modal {
             display: none; 
             position: fixed;
@@ -180,7 +177,7 @@
     <div class="logo">VaPeX</div>
     <nav>
         <a href="#">Home</a>
-        <a href="https://github.com/xvapexa" target="_blank">GitHub</a>
+        <a href="#">Servers</a>
         <a href="#">Panel</a>
     </nav>
 </header>
@@ -214,7 +211,7 @@
         
         <div id="step1">
             <h2 style="margin-bottom: 5px;">Select Location</h2>
-            <p style="color: #94a3b8; margin-bottom: 20px;">სად გსურთ სერვერის ჰოსტინგი?</p>
+            <p style="color: #94a3b8; margin-bottom: 20px;">Where should we host your server?</p>
             <div class="selection-list">
                 <button class="select-btn" onclick="nextStep('Europe')">🇪🇺 Europe (Germany)</button>
                 <button class="select-btn" onclick="nextStep('Asia')">🌏 Asia (Singapore)</button>
@@ -224,13 +221,13 @@
 
         <div id="step2" style="display:none;">
             <h2 style="margin-bottom: 5px;">Choose Plan</h2>
-            <p style="color: #94a3b8; margin-bottom: 20px;">რომელი პაკეტი გირჩევნიათ?</p>
+            <p style="color: #94a3b8; margin-bottom: 20px;">Which package do you prefer?</p>
             <div class="selection-list">
                 <button class="select-btn" onclick="finishOrder('Free (2GB)')">Free Plan - 0$</button>
                 <button class="select-btn" onclick="finishOrder('Pro (6GB)')">Pro Plan - Premium</button>
             </div>
             <br>
-            <a href="javascript:void(0)" onclick="prevStep()" style="color: #22c55e; text-decoration: none; font-size: 14px;">← უკან დაბრუნება</a>
+            <a href="javascript:void(0)" onclick="prevStep()" style="color: #22c55e; text-decoration: none; font-size: 14px;">← Go Back</a>
         </div>
     </div>
 </div>
@@ -244,13 +241,13 @@
 
     function openModal() {
         document.getElementById("orderModal").style.display = "block";
-        document.body.style.overflow = "hidden"; // სქროლის გათიშვა
+        document.body.style.overflow = "hidden";
     }
 
     function closeModal() {
         document.getElementById("orderModal").style.display = "none";
-        document.body.style.overflow = "auto"; 
-        prevStep(); // დავაბრუნოთ პირველ ნაბიჯზე შემდეგისთვის
+        document.body.style.overflow = "auto";
+        prevStep();
     }
 
     function nextStep(loc) {
@@ -265,11 +262,10 @@
     }
 
     function finishOrder(plan) {
-        alert("გილოცავთ! თქვენი სერვერი მზადდება.\nლოკაცია: " + userLocation + "\nგეგმა: " + plan);
+        alert("Success! Your server is being prepared.\nLocation: " + userLocation + "\nPlan: " + plan);
         closeModal();
     }
 
-    // ფანჯრის გარეთ დაჭერისას დახურვა
     window.onclick = function(event) {
         let modal = document.getElementById("orderModal");
         if (event.target == modal) {
