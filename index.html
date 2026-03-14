@@ -1,132 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>VaPeX Hosting</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaPeX Hosting | Free Minecraft Servers</title>
+    <style>
+        /* მთავარი სტილები */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            overflow-x: hidden;
+        }
 
-<style>
+        header {
+            background: #020617;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+        }
 
-body{
-    margin:0;
-    font-family:Arial;
-    background:#0f172a;
-    color:white;
-}
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #22c55e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-header{
-    background:#020617;
-    padding:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-.logo{
-    font-size:24px;
-    font-weight:bold;
-    color:#22c55e;
-}
+        nav a:hover {
+            color: #22c55e;
+        }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:20px;
-}
+        /* Hero სექცია */
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+        }
 
-.hero{
-    text-align:center;
-    padding:120px 20px;
-}
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
 
-.hero h1{
-    font-size:50px;
-}
+        .hero p {
+            color: #94a3b8;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
 
-.hero p{
-    color:#94a3b8;
-}
+        .button {
+            display: inline-block;
+            background: #22c55e;
+            padding: 18px 45px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #020617;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
 
-.button{
-    background:#22c55e;
-    padding:15px 35px;
-    border-radius:8px;
-    text-decoration:none;
-    color:black;
-    font-weight:bold;
-}
+        .button:hover {
+            background: #16a34a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
 
-.servers{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    padding:60px;
-}
+        /* ბარათების სექცია */
+        .servers {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 80px 20px;
+        }
 
-.card{
-    background:#020617;
-    padding:30px;
-    border-radius:10px;
-    width:250px;
-    text-align:center;
-}
+        .card {
+            background: #020617;
+            padding: 40px;
+            border-radius: 15px;
+            width: 300px;
+            text-align: center;
+            border: 1px solid #1e293b;
+            transition: 0.3s;
+        }
 
-footer{
-    text-align:center;
-    padding:20px;
-    background:#020617;
-    color:#94a3b8;
-}
+        .card:hover {
+            border-color: #22c55e;
+            transform: scale(1.02);
+        }
 
-</style>
+        .card h2 { margin-top: 0; }
+        .card .price { font-size: 32px; color: #22c55e; font-weight: bold; margin: 15px 0; }
+        .card p { color: #94a3b8; margin: 10px 0; }
+
+        /* Modal (არჩევანის ფანჯარა) */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background-color: #020617;
+            margin: 10% auto;
+            padding: 40px;
+            border: 1px solid #22c55e;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 25px; top: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #94a3b8;
+        }
+
+        .selection-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .select-btn {
+            background: #1e293b;
+            color: white;
+            border: 1px solid #334155;
+            padding: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .select-btn:hover {
+            border-color: #22c55e;
+            background: #0f172a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: #020617;
+            color: #64748b;
+            border-top: 1px solid #1e293b;
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-<div class="logo">VaPeX Hosting</div>
-
-<nav>
-<a href="#">Home</a>
-<a href="#">Servers</a>
-<a href="#">Panel</a>
-</nav>
+    <div class="logo">VaPeX</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="https://github.com/xvapexa" target="_blank">GitHub</a>
+        <a href="#">Panel</a>
+    </nav>
 </header>
 
-
 <section class="hero">
-
-<h1>Free Minecraft Hosting</h1>
-<p>Fast • Free • Simple</p>
-
-<br>
-
-<a class="button" href="#">Create Server</a>
-
+    <h1>Free Minecraft Hosting</h1>
+    <p>High performance nodes for your community.</p>
+    <button class="button" onclick="openModal()">Create Server</button>
 </section>
-
 
 <section class="servers">
-
-<div class="card">
-<h2>Free Plan</h2>
-<p>2GB RAM</p>
-<p>10 Player Slots</p>
-</div>
-
-<div class="card">
-<h2>Pro Plan</h2>
-<p>6GB RAM</p>
-<p>Unlimited Slots</p>
-</div>
-
+    <div class="card">
+        <h2>Free Plan</h2>
+        <div class="price">0$</div>
+        <p>2GB DDR4 RAM</p>
+        <p>10 Player Slots</p>
+        <p>200% CPU Limit</p>
+    </div>
+    <div class="card">
+        <h2>Pro Plan</h2>
+        <div class="price">Premium</div>
+        <p>6GB DDR4 RAM</p>
+        <p>Unlimited Slots</p>
+        <p>400% CPU Limit</p>
+    </div>
 </section>
 
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        
+        <div id="step1">
+            <h2 style="margin-bottom: 5px;">Select Location</h2>
+            <p style="color: #94a3b8; margin-bottom: 20px;">სად გსურთ სერვერის ჰოსტინგი?</p>
+            <div class="selection-list">
+                <button class="select-btn" onclick="nextStep('Europe')">🇪🇺 Europe (Germany)</button>
+                <button class="select-btn" onclick="nextStep('Asia')">🌏 Asia (Singapore)</button>
+                <button class="select-btn" onclick="nextStep('USA')">🇺🇸 North America</button>
+            </div>
+        </div>
+
+        <div id="step2" style="display:none;">
+            <h2 style="margin-bottom: 5px;">Choose Plan</h2>
+            <p style="color: #94a3b8; margin-bottom: 20px;">რომელი პაკეტი გირჩევნიათ?</p>
+            <div class="selection-list">
+                <button class="select-btn" onclick="finishOrder('Free (2GB)')">Free Plan - 0$</button>
+                <button class="select-btn" onclick="finishOrder('Pro (6GB)')">Pro Plan - Premium</button>
+            </div>
+            <br>
+            <a href="javascript:void(0)" onclick="prevStep()" style="color: #22c55e; text-decoration: none; font-size: 14px;">← უკან დაბრუნება</a>
+        </div>
+    </div>
+</div>
 
 <footer>
-
-<p>© 2026 VaPeX Hosting</p>
-
+    <p>© 2026 VaPeX Hosting. All rights reserved.</p>
 </footer>
+
+<script>
+    let userLocation = "";
+
+    function openModal() {
+        document.getElementById("orderModal").style.display = "block";
+        document.body.style.overflow = "hidden"; // სქროლის გათიშვა
+    }
+
+    function closeModal() {
+        document.getElementById("orderModal").style.display = "none";
+        document.body.style.overflow = "auto"; 
+        prevStep(); // დავაბრუნოთ პირველ ნაბიჯზე შემდეგისთვის
+    }
+
+    function nextStep(loc) {
+        userLocation = loc;
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "block";
+    }
+
+    function prevStep() {
+        document.getElementById("step1").style.display = "block";
+        document.getElementById("step2").style.display = "none";
+    }
+
+    function finishOrder(plan) {
+        alert("გილოცავთ! თქვენი სერვერი მზადდება.\nლოკაცია: " + userLocation + "\nგეგმა: " + plan);
+        closeModal();
+    }
+
+    // ფანჯრის გარეთ დაჭერისას დახურვა
+    window.onclick = function(event) {
+        let modal = document.getElementById("orderModal");
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
 
 </body>
 </html>
