@@ -1,12 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Website</title>
+<meta charset="UTF-8">
+<title>Vapexa Hosting</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f172a;
+    color:white;
+}
+
+header{
+    background:#020617;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#22c55e;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.hero{
+    text-align:center;
+    padding:120px 20px;
+}
+
+.hero h1{
+    font-size:50px;
+}
+
+.hero p{
+    color:#94a3b8;
+}
+
+.button{
+    background:#22c55e;
+    padding:15px 35px;
+    border-radius:8px;
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
+}
+
+.servers{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    padding:60px;
+}
+
+.card{
+    background:#020617;
+    padding:30px;
+    border-radius:10px;
+    width:250px;
+    text-align:center;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#020617;
+    color:#94a3b8;
+}
+
+</style>
 </head>
 
 <body>
-<h1>Hosting Site</h1>
-<p>GitHub hosting Working🚀</p>
-</body>
 
+<header>
+<div class="logo">Vapexa Hosting</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Servers</a>
+<a href="#">Panel</a>
+</nav>
+</header>
+
+
+<section class="hero">
+
+<h1>Free Minecraft Hosting</h1>
+<p>Fast • Free • Simple</p>
+
+<br>
+
+<a class="button" href="#">Create Server</a>
+
+</section>
+
+
+<section class="servers">
+
+<div class="card">
+<h2>Free Plan</h2>
+<p>2GB RAM</p>
+<p>10 Player Slots</p>
+</div>
+
+<div class="card">
+<h2>Pro Plan</h2>
+<p>6GB RAM</p>
+<p>Unlimited Slots</p>
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Vapexa Hosting</p>
+
+</footer>
+
+</body>
 </html>
