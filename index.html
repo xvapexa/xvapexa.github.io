@@ -10,7 +10,7 @@
             font-family: 'Segoe UI', Arial, sans-serif;
             background: #0f172a;
             color: white;
-            overflow: hidden; /* იკეტება სქროლი ლოგინამდე */
+            overflow: hidden; 
         }
 
         /* Login Overlay */
@@ -30,7 +30,7 @@
             padding: 40px;
             border-radius: 20px;
             border: 1px solid #22c55e;
-            width: 320px;
+            width: 350px;
             text-align: center;
             box-shadow: 0 0 30px rgba(34, 197, 94, 0.1);
         }
@@ -46,7 +46,10 @@
             background: #020617;
             color: white;
             box-sizing: border-box;
+            outline: none;
         }
+
+        .auth-card input:focus { border-color: #22c55e; }
 
         .auth-btn {
             width: 100%;
@@ -58,6 +61,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
+            font-size: 16px;
         }
 
         .auth-btn:hover { background: #16a34a; }
@@ -67,9 +71,10 @@
             font-size: 14px;
             color: #94a3b8;
             cursor: pointer;
+            text-decoration: none;
         }
 
-        /* Main Content (დამალულია თავიდან) */
+        /* Main Website Content */
         #mainContent { display: none; }
 
         header {
@@ -91,23 +96,24 @@
         
         .button {
             display: inline-block; background: #22c55e; padding: 18px 45px; border-radius: 10px;
-            text-decoration: none; color: #020617; font-weight: bold; cursor: pointer; border: none;
+            text-decoration: none; color: #020617; font-weight: bold; cursor: pointer; border: none; font-size: 18px;
         }
 
-        .servers { display: flex; justify-content: center; gap: 40px; padding: 80px 20px; }
+        .servers { display: flex; justify-content: center; gap: 40px; padding: 80px 20px; flex-wrap: wrap; }
         .card { background: #020617; padding: 40px; border-radius: 15px; width: 280px; text-align: center; border: 1px solid #1e293b; }
 
-        /* Order Modal */
+        /* Modal Settings */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
         .modal-content { background: #020617; margin: 10% auto; padding: 40px; border: 1px solid #22c55e; width: 350px; border-radius: 20px; text-align: center; position: relative; }
-        .select-btn { background: #1e293b; color: white; border: 1px solid #334155; padding: 15px; width: 100%; margin-top: 10px; border-radius: 10px; cursor: pointer; }
+        .select-btn { background: #1e293b; color: white; border: 1px solid #334155; padding: 15px; width: 100%; margin-top: 10px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+        .select-btn:hover { border-color: #22c55e; }
     </style>
 </head>
 <body>
 
 <div id="authOverlay">
     <div class="auth-card" id="loginBox">
-        <h2>Login to VaPeX</h2>
+        <h2>Login to VaPeX Hosting</h2>
         <input type="text" id="logUser" placeholder="Username">
         <input type="password" id="logPass" placeholder="Password">
         <button class="auth-btn" onclick="handleAuth()">Login</button>
@@ -115,18 +121,18 @@
     </div>
 
     <div class="auth-card" id="registerBox" style="display:none;">
-        <h2>Register</h2>
-        <input type="text" id="regUser" placeholder="Choose Username">
+        <h2>Create Account</h2>
+        <input type="text" id="regUser" placeholder="Username">
         <input type="email" id="regEmail" placeholder="Email Address">
-        <input type="password" id="regPass" placeholder="Create Password">
-        <button class="auth-btn" onclick="handleAuth()">Create Account</button>
+        <input type="password" id="regPass" placeholder="Password">
+        <button class="auth-btn" onclick="handleAuth()">Register</button>
         <p class="switch-auth" onclick="toggleAuth()">Already have an account? Login</p>
     </div>
 </div>
 
 <div id="mainContent">
     <header>
-        <div class="logo">VaPeX</div>
+        <div class="logo">VaPeX Hosting</div>
         <nav>
             <a href="#">Home</a>
             <a href="#">Servers</a>
@@ -143,35 +149,37 @@
     <section class="servers">
         <div class="card">
             <h2>Free Plan</h2>
-            <p style="color:#22c55e; font-size: 24px;">0$</p>
+            <p style="color:#22c55e; font-size: 32px; font-weight: bold;">0$</p>
             <p>2GB RAM</p>
+            <p>10 Player Slots</p>
         </div>
         <div class="card">
             <h2>Pro Plan</h2>
-            <p style="color:#22c55e; font-size: 24px;">Premium</p>
+            <p style="color:#22c55e; font-size: 32px; font-weight: bold;">6$</p>
             <p>6GB RAM</p>
+            <p>Unlimited Slots</p>
         </div>
     </section>
 </div>
 
 <div id="orderModal" class="modal">
     <div class="modal-content">
-        <span style="position:absolute; right:20px; top:10px; cursor:pointer;" onclick="closeModal()">&times;</span>
+        <span style="position:absolute; right:20px; top:10px; cursor:pointer; font-size: 24px;" onclick="closeModal()">&times;</span>
         <div id="step1">
             <h3>Select Location</h3>
-            <button class="select-btn" onclick="nextStep('Europe')">Europe</button>
-            <button class="select-btn" onclick="nextStep('USA')">USA</button>
+            <button class="select-btn" onclick="nextStep('Europe')">Europe (Germany)</button>
+            <button class="select-btn" onclick="nextStep('USA')">USA (New York)</button>
         </div>
         <div id="step2" style="display:none;">
             <h3>Select Plan</h3>
-            <button class="select-btn" onclick="finishOrder('Free')">Free (2GB)</button>
-            <button class="select-btn" onclick="finishOrder('Pro')">Pro (6GB)</button>
+            <button class="select-btn" onclick="finishOrder('Free')">Free Plan (2GB)</button>
+            <button class="select-btn" onclick="finishOrder('Pro')">Pro Plan (6GB)</button>
         </div>
     </div>
 </div>
 
 <script>
-    // Auth Logic
+    // Auth Switching
     function toggleAuth() {
         const login = document.getElementById('loginBox');
         const register = document.getElementById('registerBox');
@@ -184,8 +192,8 @@
         }
     }
 
+    // Handle Auth (Simple bypass)
     function handleAuth() {
-        // ამ ეტაპზე ნებისმიერი შესვლა მუშაობს
         document.getElementById('authOverlay').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
         document.body.style.overflow = 'auto';
@@ -195,17 +203,23 @@
         location.reload();
     }
 
-    // Order Logic
+    // Server Ordering Logic
     let userLoc = "";
     function openModal() { document.getElementById("orderModal").style.display = "block"; }
-    function closeModal() { document.getElementById("orderModal").style.display = "none"; }
+    function closeModal() { 
+        document.getElementById("orderModal").style.display = "none"; 
+        document.getElementById('step1').style.display = 'block';
+        document.getElementById('step2').style.display = 'none';
+    }
+
     function nextStep(l) { 
         userLoc = l;
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
     }
+
     function finishOrder(p) {
-        alert("Server request sent!\nLocation: " + userLoc + "\nPlan: " + p);
+        alert("Success! Your " + p + " server in " + userLoc + " is being setup.");
         closeModal();
     }
 </script>
